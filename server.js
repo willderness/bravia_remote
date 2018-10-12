@@ -3,6 +3,12 @@ const bodyParser = require('body-parser');
 const BraviaRemoteControl = require('sony-bravia-tv-remote');
 require('dotenv').config()
 
+PORT = process.env.PORT || 3000;
+TV_IP = process.env.TV_IP || "10.22.16.157";
+TV_PORT = process.env.TV_PORT || 80;
+TV_PIN = process.env.TV_PIN || "0000";
+
+
 const actionMap = {
   "tv" : "TvPower",
   "keyboard_arrow_up" : "Up",
@@ -17,7 +23,7 @@ const actionMap = {
   "volume_mute" : "Mute",
 };
 
-const remote = new BraviaRemoteControl('10.22.16.157', 80, '1022');
+const remote = new BraviaRemoteControl(TV_IP, TV_PORT, TV_PIN);
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -34,11 +40,11 @@ app.post('/', function (req, res) {
   action = actionMap[req.body.btn] || null;
 
   if (action)
-    remote.sendAction](action);
+    remote.sendAction(action);
 
   res.send('OK');
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(PORT, function () {
+  console.log('Example app listening on port ' + PORT)
 })
