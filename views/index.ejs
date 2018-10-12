@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(".box").click(function(){
+					clicked_btn = $(this).attr('id');
+					$.post( "/",  { btn: clicked_btn }); 
+          console.log(clicked_btn); console.log($(this));
+				});
+			});
+		</script>
+	</head>
+  <body>
+    <div class="container">
+
+<div class="wrapper">
+    <div class="box" id="tv"><i class="material-icons md-128">tv</i></div>
+    <div class="box" id="keyboard_arrow_up"><i class="material-icons md-128">keyboard_arrow_up</i></div>
+    <div class="box" id="netflix"><img src="/Netflix_Symbol_RGB.png"/></div>
+    <div class="box" id="keyboard_arrow_left"><i class="material-icons md-128">keyboard_arrow_left</i></div>
+    <div class="box" id="brightness_1"><i class="material-icons md-128">brightness_1</i></div>
+    <div class="box" id="keyboard_arrow_right"><i class="material-icons md-128">keyboard_arrow_right</i></div>
+    <div class="box" id="keyboard_backspace"><i class="material-icons md-128">keyboard_backspace</i></div>
+    <div class="box" id="keyboard_arrow_down"><i class="material-icons md-128">keyboard_arrow_down</i></div>
+    <div class="box" id="home"><i class="material-icons md-128">home</i></div>
+</div>
+    </div>
+  </body>
+</html>
