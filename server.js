@@ -3,6 +3,19 @@ const bodyParser = require('body-parser');
 const BraviaRemoteControl = require('sony-bravia-tv-remote');
 require('dotenv').config()
 
+const actionMap = {
+  "tv" : "TvPower",
+  "keyboard_arrow_up" : "Up",
+  "keyboard_arrow_down" : "Down",
+  "keyboard_arrow_right" : "Right",
+  "keyboard_arrow_left" : "Left",
+  "brightness_1" : "Enter",
+  "home" : "Home",
+  "movie" : "Netflix",
+  "volume_up" : "VolumeUp",
+  "volume_down" : "VolumeDown",
+  "volume_mute" : "Mute",
+};
 
 const remote = new BraviaRemoteControl('10.22.16.157', 80, '1022');
 
@@ -17,24 +30,13 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   btn = req.body.btn;
-  console.log(btn);
-  res.send('OK');
-  action = null;
-  switch(req.body.btn) {
-    case "tv": action = "TvPower"; break;
-    case "keyboard_arrow_up": action = "Up"; break;
-    case "keyboard_arrow_down": action = "Down"; break;
-    case "keyboard_arrow_right": action = "Right"; break;
-    case "keyboard_arrow_left": action = "Left"; break;
-    case "brightness_1": action = "Enter"; break;
-    case "home": action = "Home"; break;
-    case "movie": action = "Netflix"; break;
-    case "volup": action = "VolumeUp"; break;
-    case "voldown": action = "VolumeDown"; break;
-  }
+  
+  action = actionMap[req.body.btn] || null;
 
   if (action)
-    remote.sendAction(action);
+    remote.sendAction](action);
+
+  res.send('OK');
 })
 
 app.listen(3000, function () {

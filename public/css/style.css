@@ -34,3 +34,7 @@ img {
 .box:hover { background-color: #555; }
 
 .material-icons.md-128 { font-size: 128px; }
+
+p {
+  margin: 3em;
+}

@@ -12,7 +12,6 @@
 				$(".box").click(function(){
 					clicked_btn = $(this).attr('id');
 					$.post( "/",  { btn: clicked_btn }); 
-          console.log(clicked_btn); console.log($(this));
 				});
 			});
 		</script>
@@ -30,6 +29,12 @@
     <div class="box" id="keyboard_backspace"><i class="material-icons md-128">keyboard_backspace</i></div>
     <div class="box" id="keyboard_arrow_down"><i class="material-icons md-128">keyboard_arrow_down</i></div>
     <div class="box" id="home"><i class="material-icons md-128">home</i></div>
+</div>
+<p></p>
+<div class="wrapper">
+  <div class="box" id="volume_down"><i class="material-icons md-128">volume_down</i></div>
+  <div class="box" id="volume_mute"><i class="material-icons md-128">volume_mute</i></div>
+  <div class="box" id="volume_up"><i class="material-icons md-128">volume_up</i></div>
 </div>
     </div>
   </body>
